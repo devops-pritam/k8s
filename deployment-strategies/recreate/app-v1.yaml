@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: recreate
+  name: my-app
   labels:
-    app: recreate
+    app: my-app
 spec:
   type: NodePort
   ports:
@@ -11,24 +11,24 @@ spec:
     port: 80
     targetPort: http
   selector:
-    app: recreate
+    app: my-app
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: recreate
+  name: my-app
   labels:
-    app: recreate
+    app: my-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: recreate
+      app: my-app
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: recreate
+      app: my-app
   template:
     metadata:
       labels:
@@ -36,7 +36,7 @@ spec:
         version: v1.0.0
     spec:
       containers:
-      - name: recreate
+      - name: my-app
         image: pritamrgb/k8s-image
         ports:
         - name: http
