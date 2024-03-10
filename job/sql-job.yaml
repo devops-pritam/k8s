@@ -17,6 +17,6 @@ spec:
          - |
            git clone https://github.com/devops-pritam/k8s.git
            mysql -h mysql -u root -padmin -e 'CREATE DATABASE IF NOT EXISTS test';
-           mysql -h mysql -u root -padmin test < demo-k8s/datadump/mysql.sql
+           mysql -h mysql -u root -padmin test < k8s/job/mysql.sql
            sleep 20
      restartPolicy: OnFailure  
